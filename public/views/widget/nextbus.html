@@ -1,0 +1,30 @@
+<div class="card lighten-2" ng-class="n.busColor">
+  <div class="card-content white-text large-widget nextbus-widget">
+    <p class="text-left font-weight-300">NextBus </p>
+    <br/>
+    <select class="form-control" ng-model="n.route" ng-change="n.ChangeNextbusRoute()">
+      <option value="">-- Select Route --</option>
+      <option ng-repeat="route in n.routes" value="{{route.tag}}">
+      {{route.title}}
+      </option>
+    </select>
+    <select class="form-control" ng-if="n.route" ng-model="n.stop" ng-change="n.ChangeNextbusStop()">
+      <option value="">-- Select Stop --</option>
+      <option ng-repeat="stop in n.stops" value="{{stop.tag}}">{{stop.title}}</option>
+    </select>
+    <div ng-if="n.stop">
+      <div class="alert alert-warning clearfix" ng-if="n.predictions.message">
+        {{n.predictions.message.text}}
+      </div>
+      <p class="pull-right font-weight-500 widget-title-with-content">Last Updated: {{n.lastUpdated}}</p>
+      <br/>
+      <p class="text-center font-medium" ng-if="!n.predictions.direction">
+      There is currently no prediction for this stop
+      </p>
+      <!--Array form (more than one prediction)-->
+      <p class="clearfix text-center" ng-if="n.predictions.direction && n.isArray(n.predictions.direction.prediction)" ng-repeat="prediction in n.predictions.direction.prediction track by $index" ng-class="{'font-big': ($index == 0), 'font-medium': ($index >= 1)}">{{(prediction.minutes == 0) ? "Arriving in" : prediction.minutes}} {{(prediction.minutes == 1) ? " minute" : (prediction.minutes == 0) ? "" : " minutes"}} {{(prediction.seconds < 60) ? prediction.seconds : (prediction.seconds % prediction.minutes)}} {{(prediction.seconds % prediction.minutes <= 1) ? " second" : " seconds"}}</p>
+      <!--Object form (1 prediction)-->
+       <p class="clearfix text-center font-big" ng-if="n.predictions.direction && !n.isArray(n.predictions.direction.prediction)">{{(n.predictions.direction.prediction.minutes == 0) ? "Arriving in" : n.predictions.direction.prediction.minutes}} {{(n.predictions.direction.prediction.minutes == 1) ? " minute" : (n.predictions.direction.prediction.minutes == 0) ? "" : " minutes"}} {{(n.predictions.direction.prediction.seconds < 60) ? n.predictions.direction.prediction.seconds : (n.predictions.direction.prediction.seconds % n.predictions.direction.prediction.minutes)}} {{(n.predictions.direction.prediction.seconds % n.predictions.direction.prediction.minutes <= 1) ? " second" : " seconds"}}</p>
+    </div>
+  </div>
+</div>

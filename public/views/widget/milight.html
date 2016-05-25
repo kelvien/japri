@@ -1,0 +1,21 @@
+<div class="card teal darken-2">
+  <div class="card-content white-text large-widget row">
+	<p class="light-status text-left font-weight-300 widget-badge-title light-section">LED Bulbs <span class="japri_badge badge" ng-class="(m.loadingMilightStatus) ? 'orange' : (m.isLightOn) ? 'green' : 'red'">{{(m.loadingMilightStatus) ? "Loading" : (m.isLightOn) ? "On" : "Off" | uppercase}}</span></p>
+	<br/>
+	<div class="light-section">
+		<a class="btn btn-block" ng-class="(m.isLightOn) ? 'btn-danger':'btn-success'" ng-click="(m.isLightOn)?m.TurnMilightOff() : m.ChangeMilightWhite()" promise-btn>{{(m.isLightOn) ? "turn off":"turn on"}}</a>
+	</div>
+	<div class="light-section" ng-if="m.isLightOn">
+		<p class="font-weight-300">Set Brightness</p>
+	<p class="range-field">
+      <input type="range" ng-model="m.milightBrightness" min="0" max="100" ng-change="m.ChangeBrightness()"/>
+    </p>
+	</div>
+	<div class="light-section" ng-if="m.isLightOn">
+		<p class="font-weight-300">Set Color</p>
+		<div class="color-wheel-box">
+			<div ng-colorwheel="{ size: 150, segments: 120 }" ng-model="m.wheelColor" ng-change="m.ChangeMilightColor()"></div>
+		</div>
+	</div>
+  </div>
+</div>

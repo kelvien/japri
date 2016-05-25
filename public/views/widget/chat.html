@@ -1,0 +1,16 @@
+<div class="card grey darken-2">
+ 	<div class="card-content white-text large-widget">
+	    <p class="text-left font-weight-300">Chat </p>
+		<ul class="collection chat-box" scroll-to-bottom scroll-glue>
+			<li class="collection-item background-transparent" ng-class="(chat.me)?'text-right':'text-left'" ng-repeat="chat in c.Chats track by $index">
+				{{(chat.from) ? chat.from : 'Me'}}: {{chat.message}}
+			</li>
+		</ul>
+		<div class="collection-item chat-input">
+			<form class="chat-form" ng-submit="c.SendMessage()">
+				<input type="text" ng-model="c.chat" placeholder="Send message"/>
+				<a type="submit" ng-click="c.SendMessage()" class="secondary-content chat-send-button"><i class="material-icons">send</i></a>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,564 @@
+{
+	"general": {
+		"host": "https://access-alexa-na.amazon.com"
+	},
+	"interfaces":{
+		"speechRecognizer": {
+			"request": {
+				"general": {
+					"method": "POST"
+				},
+				"listenTimeout": {
+					"URL": "/v1/avs/speechrecognizer/listentimeout",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "multipart/form-data; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Disposition": "form-data; name='request'",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader":{
+							"isArray": "true",
+							"deviceContext": [{
+								"name": "playbackState",
+								"namespace": "AudioPlayer",
+								"payload": [{
+				                    "streamId": "{{}}",
+				                    "offsetInMilliseconds": "{{}}",
+				                    "playerActivity": [{
+				                    	"IDLE": "IDLE", 
+				                    	"PAUSED": "PAUSED", 
+				                    	"PLAYING": "PLAYING"
+				                    }]
+				                }]
+							}]
+						},
+						"messageBody":{
+							"profile": "alexa-close-talk",
+							"locale": "en-us",
+	        				"format": "audio/L16; rate=16000; channels=1"
+						}
+					}
+				},
+				"recognize":  {
+					"URL": "/v1/avs/speechrecognizer/recognize",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}}",
+						"Content-Type": "multipart/form-data; boundary= {{}}"
+					},
+					"jsonHeader": {
+						"Content-Disposition": "form-data; name='request'",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader":{
+							"isArray": "true",
+							"deviceContext": [{
+								"name": "playbackState",
+								"namespace": "AudioPlayer",
+								"payload": [{
+				                    "streamId": "{{}}",
+				                    "offsetInMilliseconds": "{{}}",
+				                    "playerActivity": [{
+				                    	"IDLE": "IDLE", 
+				                    	"PAUSED": "PAUSED", 
+				                    	"PLAYING": "PLAYING"
+				                    }]
+				                }]
+							}]
+						},
+						"messageBody":{
+							"profile": "alexa-close-talk",
+							"locale": "en-us",
+	        				"format": "audio/L16; rate=16000; channels=1"
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data/ name='audio'",
+						"Content-Type": "audio/L16, rate=16000; channels=1"
+					},
+					"audioData": "{{}}"
+				},
+				"speechRecognizer": {
+					"URL": "/v1/avs/speechrecognizer/",
+					"httpHeader":{
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "multipart/form-data; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Disposition": "form-data; name='request'",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody":{
+						"messageHeader":{
+							"isArray": "true",
+							"deviceContext": [{
+								"name": "playbackState",
+								"namespace": "AudioPlayer",
+								"payload": [{
+				                    "streamId": "{{}}",
+				                    "offsetInMilliseconds": "{{}}",
+				                    "playerActivity": [{
+				                    	"IDLE": "IDLE", 
+				                    	"PAUSED": "PAUSED", 
+				                    	"PLAYING": "PLAYING"
+				                    }]
+				                }]
+							}]
+						},
+						"messageBody":{
+							"profile": "alexa-close-talk",
+							"locale": "en-us",
+	        				"format": "audio/L16; rate=16000; channels=1"
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data/ name='audio'",
+						"Content-Type": "audio/L16, rate=16000; channels=1"
+					},
+					"audioData": "{{}}"
+				}
+			},
+			"response": {
+				"listenTimeout": {
+					"httpHeader": {
+						"Content-Type": "multipart/related; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody":{
+							"isArray": "true",
+							"directives": {
+								"name": ["clearQueue", "listen", "play", "speak", "stop"],
+								"namespace": ["AudioPlayer", "SpeechSynthesizer"],
+								"payload": {
+									"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"],
+									"timeoutInMilliseconds": "{{}}",
+									"audioItem": {
+										"clearQueue": {
+											"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"]
+										},
+										"listen": {
+											"timeoutInMilliseconds": "{{}}"
+										},
+										"play": {
+											"audioItem": {
+												"audioItemId": "{{}}",
+												"streams": {
+													"isArray": "true",
+													"streamUrl": "{{}}",
+													"offsetInMilliseconds": "{{}}",
+													"expiryTime": "{{}}",
+													"progressReportRequired": ["true", "false"],
+													"progressReport": {
+														"progressReportDelayInMilliseconds": "{{}}",
+														"progressReportIntervalInMilliseconds": "{{}}"
+													},
+													"streamId": "{{}}"
+												}
+											},
+											"navigationToken": "{{}}",
+											"playBehavior": ["REPLACE_PREVIOUS", "WAIT_FOR_PREVIOUS_TO_COMPLETE"]
+										},
+										"speak": {
+											"audioContent": "cid: {{}}",
+											"contentIdentifier": "{{}}"
+										},
+										"stop": ""
+									}
+								}
+							}
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data; name='audio'",
+						"Content-Type": "audio/mpeg",
+						"Content-ID": "{{}}"
+					},
+					"audioData": "{{}}"
+				},
+				"recognize": {
+					"httpHeader": {
+						"Content-Type": "multipart/related; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody":{
+							"isArray": "true",
+							"directives": {
+								"name": ["clearQueue", "listen", "play", "speak", "stop"],
+								"namespace": ["AudioPlayer", "SpeechSynthesizer"],
+								"payload": {
+									"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"],
+									"timeoutInMilliseconds": "{{}}",
+									"audioItem": {
+										"clearQueue": {
+											"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"]
+										},
+										"listen": {
+											"timeoutInMilliseconds": "{{}}"
+										},
+										"play": {
+											"audioItem": {
+												"audioItemId": "{{}}",
+												"streams": {
+													"isArray": "true",
+													"streamUrl": "{{}}",
+													"offsetInMilliseconds": "{{}}",
+													"expiryTime": "{{}}",
+													"progressReportRequired": ["true", "false"],
+													"progressReport": {
+														"progressReportDelayInMilliseconds": "{{}}",
+														"progressReportIntervalInMilliseconds": "{{}}"
+													},
+													"streamId": "{{}}"
+												}
+											},
+											"navigationToken": "{{}}",
+											"playBehavior": ["REPLACE_PREVIOUS", "WAIT_FOR_PREVIOUS_TO_COMPLETE"]
+										},
+										"speak": {
+											"audioContent": "cid: {{}}",
+											"contentIdentifier": "{{}}"
+										},
+										"stop": ""
+									}
+								}
+							}
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data; name='audio'",
+						"Content-Type": "audio/mpeg",
+						"Content-ID": "{{}}"
+					},
+					"audioData": "{{}}"
+				},
+				"speechRecognizer": {
+					"httpHeader": {
+						"Content-Type": "multipart/related; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody":{
+							"isArray": "true",
+							"directives": {
+								"name": ["clearQueue", "listen", "play", "speak", "stop"],
+								"namespace": ["AudioPlayer", "SpeechSynthesizer"],
+								"payload": {
+									"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"],
+									"timeoutInMilliseconds": "{{}}",
+									"audioItem": {
+										"clearQueue": {
+											"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"]
+										},
+										"listen": {
+											"timeoutInMilliseconds": "{{}}"
+										},
+										"play": {
+											"audioItem": {
+												"audioItemId": "{{}}",
+												"streams": {
+													"isArray": "true",
+													"streamUrl": "{{}}",
+													"offsetInMilliseconds": "{{}}",
+													"expiryTime": "{{}}",
+													"progressReportRequired": ["true", "false"],
+													"progressReport": {
+														"progressReportDelayInMilliseconds": "{{}}",
+														"progressReportIntervalInMilliseconds": "{{}}"
+													},
+													"streamId": "{{}}"
+												}
+											},
+											"navigationToken": "{{}}",
+											"playBehavior": ["REPLACE_PREVIOUS", "WAIT_FOR_PREVIOUS_TO_COMPLETE"]
+										},
+										"speak": {
+											"audioContent": "cid: {{}}",
+											"contentIdentifier": "{{}}"
+										},
+										"stop": ""
+									}
+								}
+							}
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data; name='audio'",
+						"Content-Type": "audio/mpeg",
+						"Content-ID": "{{}}"
+					},
+					"audioData": "{{}}"
+				},
+			}
+		},
+		"AudioPlayer": {
+			"request": {
+				"general": {
+					"method": "POST"
+				},
+				"audioPlayerEvents": {
+					"URL": "/v1/avs/audioplayer/",
+					"httpHeader": {
+						"Authorization": "{{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"getNextItem": {
+					"URL": "/v1/avs/audioplayer/getNextItem",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"navigationToken": "{{}}"
+						}
+					}
+				},
+				"metadataAvailable": {
+					"URL": "/v1/avs/audioplayer/metadataAvailable",
+					"httpHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"metadata": "",
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"playbackError": {
+					"URL": "/v1/avs/audioplayer/playbackError",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"errorType": "MEDIA_ERROR_UNKNOWN",
+							"errorMessage": "{{}}",
+							"streamId": "{{}}",
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"playbackFinished": {
+					"URL": "/v1/avs/audioplayer/playbackFinished",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"playbackIdle": {
+					"URL": "/v1/avs/audioplayer/playbackIdle",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"playbackInterrupted": [{
+					"URL": "/v1/avs/audioplayer/playbackInterrupted",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				}],
+				"playbackProgressReport": {
+					"URL": "/v1/avs/audioplayer/playbackProgressReport",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}
+				},
+				"playbackStarted": {
+					"URL": "/v1/avs/audioplayer/playbackStarted",
+					"httpHeader": {
+						"Authorization": "Bearer {{}}",
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"playbackState": {
+								"streamId": "{{}}",
+								"offsetInMilliseconds": "{{}}",
+								"playerActivity": ["IDLE", "PAUSED", "PLAYING"]
+							}
+						}
+					}	
+				}
+			},
+			"response": {
+				"audioPlayerEvents": {
+					"httpHeader": {
+						"Content-Type": "multipart/related; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"isArray": "true",
+							"directives": {
+								"name": ["clearQueue", "listen", "play", "speak", "stop"],
+								"namespace": ["AudioPlayer", "SpeechSynthesizer"],
+								"payload": {
+									"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"],
+									"timeoutInMilliseconds": "{{}}",
+									"audioItem": {
+										"clearQueue": {
+											"clearBehavior": ["CLEAR_ALL", "CLEAR_ENQUEUED"]
+										},
+										"listen": {
+											"timeoutInMilliseconds": "{{}}"
+										},
+										"play": {
+											"audioItem": {
+												"audioItemId": "{{}}",
+												"streams": {
+													"isArray": "true",
+													"streamUrl": "{{}}",
+													"offsetInMilliseconds": "{{}}",
+													"expiryTime": "{{}}",
+													"progressReportRequired": ["true", "false"],
+													"progressReport": {
+														"progressReportDelayInMilliseconds": "{{}}",
+														"progressReportIntervalInMilliseconds": "{{}}"
+													},
+													"streamId": "{{}}"
+												}
+											},
+											"navigationToken": "{{}}",
+											"playBehavior": ["REPLACE_PREVIOUS", "WAIT_FOR_PREVIOUS_TO_COMPLETE"]
+										},
+										"speak": {
+											"audioContent": "cid: {{}}",
+											"contentIdentifier": "{{}}"
+										},
+										"stop": ""
+									}
+								}
+							}
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data; name='audio'",
+						"Content-Type": "audio/mpeg",
+						"Content-ID": "{{}}"
+					},
+					"audioData": "{{}}"
+				},
+				"getNextItem": {
+					"httpHeader": {
+						"Content-Type": "multipart/related; boundary={{}}"
+					},
+					"jsonHeader": {
+						"Content-Type": "application/json; charset=UTF-8"
+					},
+					"jsonBody": {
+						"messageHeader": "",
+						"messageBody": {
+							"isArray": "true",
+							"audioItem": {
+								"streams": {
+									"streamUrl": "{{}}",
+									"offsetInMilliseconds": "{{}}",
+									"expiryTime": "{{}}",
+									"progressReportRequired": ["true", "false"],
+									"progressReport": {
+										"progressReportDelayInMilliseconds": "{{}}",
+										"progressReportIntervalInMilliseconds": "{{}}"
+									},
+									"streamId": "{{}}"
+								},
+								"audioItemId": "{{}}",
+							},
+							"navigationToken": "{{}}"
+						}
+					},
+					"audioHeader": {
+						"Content-Disposition": "form-data; name='audio'",
+						"Content-Type": "audio/mpeg",
+						"Content-ID": "{{}}"
+					},
+					"audioData": "{{}}"
+				}
+			}
+		}
+	}
+}

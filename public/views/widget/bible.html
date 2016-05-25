@@ -1,0 +1,20 @@
+<div ng-if="b.loading" class="margin-all-30">
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</div>
+<div ng-if="!b.loading">
+  <div class="card-panel orange" ng-if="!b.data">
+    <span class="white-text">
+    Bible resource is currently unavailable
+    </span>
+  </div>
+  <blockquote class="no-margin-top" ng-if="b.data">
+    <span ng-repeat="verse in b.data">{{verse.text}}
+    <span ng-if="$last">
+      <b> - {{verse.bookname}} {{verse.chapter}} : {{verse.verse}}
+      </b>
+    </span>
+  </span>
+  </blockquote>
+</div>

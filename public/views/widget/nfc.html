@@ -1,0 +1,21 @@
+<div class="card cyan darken-2">
+	<div class="card-content white-text large-widget">
+    	<p class="text-left font-weight-300 widget-badge-title">NFC <span class="japri_badge badge" ng-class="(n.loadingNfc) ? 'orange' : (n.isNFCOn) ? 'green' : 'red'">{{(n.loadingNfc) ? "Loading" : (n.isNFCOn) ? "On" : "Off" | uppercase}}</span></p>
+    	<br/>
+    	<p ng-if="n.pollType" class="text-center font-weight-500">{{n.pollType}}</p>
+    	<hr/>
+    	<button ng-show="n.isNFCOn" class="btn btn-block red" ng-click="n.StopNFC()">Stop</button>
+    	<div ng-if="!n.isNFCOn">
+    		<button class="btn btn-block primary" ng-click="n.Poll('authorizeDoorOpener')">Authenticate Door</button>
+    		<button class="btn btn-block primary" ng-click="n.Poll('readTag')">Start Poll</button>
+    	</div>
+    	<ul ng-if="n.isNFCOn" class="collection nfc-poll-box">
+			<li class="collection-item background-transparent" ng-repeat="tag in n.detectedTags track by $index">Time detected: {{tag.date+" - Tag UID: "+tag.tag}}
+			<a class="pull-right" disabled ng-if="tag.registered">Registered</a>
+			<a class="pull-right" disabled ng-if="tag.error">
+			Unknown tag status
+			</a>
+			</li> 
+		</ul>
+    </div>
+</div>

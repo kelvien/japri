@@ -1,0 +1,9 @@
+<div class="card gradient-orange">
+  <div class="card-content white-text">
+  	<p class="text-left font-weight-300 widget-badge-title">Motion Sensor <span class="japri_badge badge" ng-class="(p.loadingPIR) ? 'orange' : (p.isPIROn) ? 'green' : 'red'">{{(p.loadingPIR)? "Loading" : (p.isPIROn) ? "On" : "Off" | uppercase}}</span></p>
+  	<br/>
+	<p class="font-light pull-right"><b>Live data : </b>  {{(!p.isPIROn)? "Unavailable" : (p.PIRReading == 0) ? "No motion" : "Motion detected"}}</p>
+    <hr class="no-margin-bottom"/>
+    <pir-sensor-chart data="p.PIRReading"></pir-sensor-chart>
+  </div>
+</div>

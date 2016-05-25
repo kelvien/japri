@@ -1,0 +1,27 @@
+{
+    "secure": true,
+	"app_port": "",
+    "app_secure_port": "",
+	"db_port": "",
+	"db_username": "",
+	"db_password": "",
+	"jwt_secret": "",
+
+    "weatherAPIKey": "",
+    "nytTopStoriesAPIKey": "",
+
+    "mailer_email": "",
+    "mailer_password": "",
+
+    "kiosk_username": "",
+    "kiosk_password": "",
+
+    "initLiveStream": false,
+    "initNFCReader": false,
+    "initPIRSensor": false,
+    "initLightSensor": false,
+    "initMilight": false,
+    "initLightStrip": false,
+    
+    "milightIPAddress": ""
+}

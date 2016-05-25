@@ -1,0 +1,360 @@
+/* FONTS */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(../font/material-design-icons/Materials-Icons.woff2) format('woff2');
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+/*Override rules*/
+j-header nav {
+  box-shadow: none;
+}
+.btn.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+.btn.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+.btn.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.btn.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+.btn.btn-danger {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+/*Materialize Sticky footer*/
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+  margin: 20px 0;
+}
+/*End of Materialize Sticky footer*/
+/*General Usage*/
+.margin-all-5 {
+  margin: 5px;
+}
+.margin-all-10 {
+  margin: 10px;
+}
+.margin-all-15 {
+  margin: 15px;
+}
+.margin-all-20 {
+  margin: 20px;
+}
+.margin-all-25 {
+  margin: 25px;
+}
+.margin-all-30 {
+  margin: 30px;
+}
+.margin-all-35 {
+  margin: 35px;
+}
+.margin-all-40 {
+  margin: 40px;
+}
+div.background_color-japri {
+  background-color: #ee6e73;
+}
+.color-japri {
+  color: #ee6e73;
+}
+.color-white {
+  color: white;
+}
+.btn.btn-gray {
+  background-color: #ececec;
+  border-color: #ececec;
+  color: black;
+}
+.no-margin-top {
+  margin-top: 0px;
+}
+.no-margin-bottom {
+  margin-bottom: 0px;
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-light {
+  font-weight: lighter;
+}
+.font-weight-100 {
+  font-weight: 100;
+}
+.font-weight-200 {
+  font-weight: 200;
+}
+.font-weight-300 {
+  font-weight: 300;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+.vertical-center {
+  vertical-align: middle;
+  display: inline-block;
+}
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.no-pad-left {
+  padding-left: 0;
+}
+.no-pad-right {
+  padding-right: 0;
+}
+.font-big {
+  font-size: 30px;
+}
+.font-medium {
+  font-size: 23px;
+}
+.display-block {
+  display: block;
+}
+/*Camera*/
+span.japri_badge {
+  padding: 3px 7px;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 2px;
+  position: relative;
+  right: 0;
+}
+div.valign-wrapper.img-bg-placeholder {
+  background-color: black;
+}
+div.img-placeholder {
+  padding-bottom: 75%;
+}
+/*Form in cards*/
+div.card form label {
+  color: white;
+}
+div.card select.browser-default {
+  background-color: rgba(255, 255, 255, 0);
+}
+/*FAB*/
+.fixed-action-btn ul > li > span {
+  position: absolute;
+  right: 100%;
+  white-space: nowrap;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 3px 9px;
+  color: white;
+  margin-top: 4px;
+}
+/*Chat*/
+.chat-box {
+  min-height: 250px;
+  max-height: 250px;
+  overflow: scroll;
+}
+.chat-form {
+  position: relative;
+}
+.chat-input {
+  width: 100%;
+}
+.chat-send-button {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+/*Scrollbar*/
+::-webkit-scrollbar {
+  width: 0px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  -webkit-border-radius: 6px;
+}
+/*Dashboard Widgets*/
+.small-widget {
+  min-height: 220px;
+}
+.small-widget.vertical-container {
+  line-height: 220px;
+}
+.large-widget {
+  height: auto;
+}
+.parent-vertical {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+.child-vertical {
+  display: table-cell;
+  vertical-align: middle;
+}
+.widget-badge-title span.badge {
+  margin-left: 10px;
+}
+.card .card-content p.last-updated-text {
+  margin-bottom: 10px;
+}
+.card .card-content p.widget-title-with-content {
+  margin-bottom: 10px;
+}
+.collection .collection-item.background-transparent {
+  background-color: transparent;
+}
+.nfc-poll-box {
+  min-height: 250px;
+  max-height: 250px;
+  overflow: scroll;
+}
+/*Nextbus widget*/
+.nextbus-widget select {
+  margin-bottom: 15px;
+}
+/*Weather widget*/
+.weather-info {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.weather-daily {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.weather-inline {
+  display: inline-block;
+}
+.weather-summary-text {
+  max-width: 200px;
+}
+/*Sensor widgets*/
+.chart-container {
+  position: relative;
+}
+.chart-info {
+  position: absolute;
+  height: 100%;
+}
+.chart-info .first-nav {
+  position: absolute;
+  top: 0;
+}
+.chart-info .second-nav {
+  position: absolute;
+  bottom: 45px;
+}
+.tick text {
+  font-weight: 300;
+}
+.domain {
+  fill: none;
+  stroke: "white";
+  strok-width: "1";
+}
+.x-axis {
+  stroke: white;
+}
+.x-axis line {
+  shape-rendering: auto;
+}
+.line {
+  fill: none;
+  stroke: white;
+  stroke-width: 2px;
+}
+.pir-sensor-chart-box,
+.light-sensor-chart-box {
+  display: block;
+  position: relative;
+  overflow-x: scroll;
+}
+.gradient-blue {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9bc2f2+0,006af4+100 */
+  background: #9bc2f2;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #9bc2f2 0%, #006af4 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #9bc2f2 0%, #006af4 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #9bc2f2 0%, #006af4 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9bc2f2', endColorstr='#006af4', GradientType=0);
+  /* IE6-9 */
+}
+.gradient-orange {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffbdb5+0,ff553b+100 */
+  background: #ffbdb5;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #ffbdb5 0%, #ff553b 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #ffbdb5 0%, #ff553b 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #ffbdb5 0%, #ff553b 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbdb5', endColorstr='#ff553b', GradientType=0);
+  /* IE6-9 */
+}
+/*Light Widget*/
+.card .card-content p.light-status {
+  margin-bottom: 5px;
+}
+.card .card-content p.light-section {
+  margin-bottom: 10px;
+}
+.light-section {
+  margin-bottom: 10px;
+}
+.light-section label {
+  color: white;
+}
+a.light-advanced {
+  color: white;
+}
+.color-wheel-box {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}

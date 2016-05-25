@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Lighting</h3>
+			<div class="row">
+				<div class="pull-right">
+					<p class="text-right">Light Status: <span class="japri_badge badge" ng-class="(l.m.loadingMilightStatus) ? 'orange' : (l.m.isLightOn) ? 'green' : 'red'">{{(l.m.loadingMilightStatus) ? "Loading" : (l.m.isLightOn) ? "On" : "Off" | uppercase}}</span></p>
+
+					<p class="text-right">Light Strip Status: <span class="japri_badge badge" ng-class="(l.l.loadingLightStripStatus) ? 'orange' : (l.l.isLightStripOn) ? 'green' : 'red'">{{(l.l.loadingLightStripStatus) ? "Loading" : (l.l.isLightStripOn) ? "On" : "Off" | uppercase}}</span></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h3>Normal Lights</h3>
+					<a class="btn btn-primary" ng-click="(l.m.isLightOn)?l.m.TurnMilightOff() : l.m.ChangeMilightWhite()" promise-btn>{{(l.m.isLightOn) ? "turn off":"turn on"}}</a>
+				</div>
+				<div class="col-xs-12" ng-if="l.m.isLightOn">
+					<h4>Set brightness</h4>
+					<p class="range-field">
+				      <input type="range" ng-model="l.m.milightBrightness" min="0" max="100" ng-change="l.m.ChangeBrightness()"/>
+				    </p>
+				</div>
+				<div class="col-xs-12" ng-if="l.m.isLightOn">
+					<h4>Color Wheel</h4>
+					<div ng-colorwheel="{ size: 300, segments: 120 }" ng-model="l.m.wheelColor" ng-change="l.m.ChangeMilightColor()"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h3>Light Strips</h3>
+					<div class="margin-all-10">
+						<div ng-colorwheel="{ size: 300, segments: 120 }" ng-model="l.l.lightStripWheelColor" ng-change="l.l.SetLightStripColor()"></div>
+						<a class="btn" ng-class="(l.l.isLightStripOn) ? 'btn-danger':'btn-success'" ng-click="l.l.ToggleLightStrip()" promise-btn>{{(l.l.isLightStripOn)?"Turn off":"Turn on"}}</a>
+					</div>
+				</div>
+				<div class="col-xs-12" ng-if="l.l.isLightStripOn">
+					<h4>Set brightness</h4>
+					<p class="range-field">
+				      <input type="range" ng-model="l.l.lightStripBrightness" min="0" max="100" ng-change="l.l.SetLightStripBrightness()"/>
+				    </p>
+				</div>
+				<div class="col-xs-12">
+					<h4>Mode</h4>
+					<a class="btn" ng-click="l.l.Rainbow()" promise-btn>Rainbow</a>
+					<a class="btn" ng-click="l.l.Blink()" promise-btn>Blink</a>
+					<a class="btn" ng-click="l.l.Beam()" promise-btn>Beam</a>
+					<a class="btn" ng-click="l.l.Iterate()" promise-btn>Iterate</a>
+				</div>
+				<div class="col-xs-12">
+					<h4>Advanced options</h4>
+			        <div class="input-field">
+						<input type="number" placeholder="Example: 1000ms" ng-model="l.l.lightStripDelay">
+						<label class="active">Delay for blinking LightStrip</label>
+			        </div>
+			        <div class="input-field">
+			        	<p>Direction to iterate LightStrip</p>
+			        	<p>
+					      <input id="leftDirectionOption" type="radio" value="true" ng-model="l.l.lightStripDirection" />
+					      <label for="leftDirectionOption">Left to right</label>
+					    </p>
+					    <p>
+					      <input id="rightDirectionOption" type="radio" value="false" ng-model="l.l.lightStripDirection"/>
+					      <label for="rightDirectionOption">Right to left</label>
+					    </p>
+			        </div>
+				</div>				
+			</div>
+		</div>
+	</div>
+</div>

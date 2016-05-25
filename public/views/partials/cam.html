@@ -1,0 +1,37 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Camera</h3>
+			<div class="row">
+				<button class="btn" ng-if="c.IsDeveloper" ng-click="c.DevToggleStreaming()" promise-btn>Server Camera {{(c.isServerStreaming)? "off" : "on"}}</button>
+			</div>
+
+			<p class="pull-right">Server Camera is <span class="japri_badge badge" ng-class="(c.loadingLiveStream) ? 'orange' : (c.isServerStreaming) ? 'green' : 'red'">{{(c.loadingLiveStream) ? "Loading" : (c.isServerStreaming) ? "On" : "Off" | uppercase}}</span></p>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<!--Placeholder for turning off streaming-->
+					<div ng-show="!c.imgLoaded || !c.isStreaming || !c.isServerStreaming" class="valign-wrapper img-bg-placeholder">
+						<div class="img-placeholder"></div>
+				        <div class="valign center" style="width: 100%;">
+				          	<i ng-show="!c.isStreaming || !c.isServerStreaming" class="material-icons color-white">videocam_off</i>
+				          	<i ng-show="c.imgLoadError" class="material-icons color-white">error_outline</i>
+				          	<p class="color-white" ng-show="c.imgLoadError">Image is broken</p>
+				          	<p class="color-white" ng-show="!c.isServerStreaming">Server is not streaming</p>
+				          	<div ng-show="!c.imgLoaded && !c.imgLoadError && c.isStreaming && c.isServerStreaming" class="loader-inner ball-pulse">
+								<div class="background_color-japri"></div>
+								<div class="background_color-japri"></div>
+								<div class="background_color-japri"></div>
+							</div>
+				          </div>
+			        </div>
+			        <!--Streaming image-->
+					<img ng-show="c.imgLoaded && c.isStreaming && c.isServerStreaming" img-loading img-loaded="c.imgLoaded" img-load-error="c.imgLoadError" class="responsive-img" data-ng-src="{{c.liveStreamUri}}"/>
+				</div>
+				<div class="col-xs-12 text-center">
+					<button class="waves-effect waves-light btn" ng-class="(!c.isStreaming)? 'btn-success' : 'btn-danger'" ng-click="c.ToggleStreaming()" ng-disabled="!c.isServerStreaming">{{ (!c.isStreaming) ? "Start streaming" : "Stop streaming" }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

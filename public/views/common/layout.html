@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html ng-app="Japri">
+    <head>
+        <title ng-bind="state.current.title"></title>
+        <!-- Metatags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="author" content="Kelvien Hidayat">
+
+        <!-- Browser's elements -->
+    	<!-- Chrome, Firefox OS and Opera -->
+		<meta name="theme-color" content="#ee6e73">
+		<!-- Windows Phone -->
+		<meta name="msapplication-navbutton-color" content="#ee6e73">
+		<!-- iOS Safari -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+        <!-- STYLESHEETS -->
+        <link rel="stylesheet" type="text/css" href="/public/css/app-dist.min.css">
+        
+        <!-- ICONS -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/public/icons/app-icons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/public/icons/app-icons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/public/icons/app-icons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/public/icons/app-icons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/public/icons/app-icons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/public/icons/app-icons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/public/icons/app-icons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/public/icons/app-icons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/public/icons/app-icons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/public/icons/app-icons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/public/icons/app-icons/android-chrome-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/public/icons/app-icons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/public/icons/app-icons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/public/icons/app-icons/manifest.json">
+		<link rel="mask-icon" href="/public/icons/app-icons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="apple-mobile-web-app-title" content="Japri">
+		<meta name="application-name" content="Japri">
+		<meta name="msapplication-TileColor" content="#9f00a7">
+		<meta name="msapplication-TileImage" content="/public/icons/app-icons/mstile-144x144.png">
+		<meta name="theme-color" content="#ffffff">
+
+        <!-- Scripts -->
+        <script type="text/javascript" src="/public/js/app-dist.min.js" async></script>
+    </head>
+    <body>	
+		<j-header></j-header>
+
+		<main ui-view></main>
+
+        <j-footer></j-footer>
+    </body>
+</html>

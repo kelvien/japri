@@ -1,0 +1,71 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>NFC (Near Field Communication)</h3>
+			<div class="row">
+				<p class="pull-right">Server NFC Reader is <span class="japri_badge badge" ng-class="(n.loadingNfc) ? 'orange' : (n.isNFCOn) ? 'green' : 'red'">{{(n.loadingNfc) ? "Loading" : (n.isNFCOn) ? "On" : "Off" | uppercase}}</span></p>
+			</div>
+			<div class="row">
+				<div ng-if="n.isReading">
+					<ul class="collection with-header">
+						<li class="collection-header"><h4>NFC Tag Content</h4></li>
+						<li class="collection-item"></li>
+					</ul>
+
+					<p ng-if="n.IsWaiting">Please place your tag on the NFC reader...</p>
+					<a class="waves-effect waves-light btn" ng-click="n.ReadTag()" promise-btn>Read</a>
+				</div>
+				<br/>
+				<div ng-if="n.isWriting">
+					<div class="input-field">
+				        <textarea ng-model="n.writeTagMessage" class="materialize-textarea"></textarea>
+				        <label for="textarea1">Message</label>
+				        <a class="waves-effect waves-light btn" ng-click="n.WriteTag(n.writeTagMessage)" promise-btn>Write</a>
+
+				        <p ng-if="n.IsWaiting">Please place your tag on the NFC reader...</p>
+			        </div>
+				</div>
+				<br/>
+				<div>
+					<div class="input-field col-xs-12 margin-all-10">
+						<input placeholder="Tag UID" ng-model="n.registerTagInput" type="text">
+						<label class="active">Register NFC Tag</label>
+			           <a class="waves-effect waves-light btn" ng-click="n.RegisterTag(n.registerTagInput)" promise-btn>Register</a>
+			        </div>
+			        <div class="col-xs-12">
+			        	<hr/>
+			        </div>
+			        <div class="col-xs-12">
+						<button class="waves-effect waves-light btn" ng-click="n.Poll('authorizeDoorOpener')" ng-disabled="n.isNFCOn" promise-btn>Poll (Authenticate & Open door)</button>
+						<button class="waves-effect waves-light btn" ng-disabled="n.isNFCOn" ng-click="n.Poll('readTag')" promise-btn>Poll (Read Tag UID)</button>
+						<ul class="collection with-header">
+							<li class="collection-header" id="pollTab"><h4>NFC Polling</h4></li>
+							<li  class="collection-item" ng-repeat="tag in n.detectedTags track by $index">Time detected: {{tag.date+" - Tag UID: "+tag.tag}}
+							<a class="pull-right" disabled ng-if="tag.registered">Registered</a>
+							<a class="pull-right" disabled ng-if="tag.error">
+							Unknown tag status
+							</a>
+							</li> 
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="fixed-action-btn" style="bottom: 100px; right: 24px;">
+	          <a class="btn-floating btn-large red">
+	            <i class="material-icons">toll</i>
+	          </a>
+	          <ul>
+	            <li>
+	            	<span ng-show="!n.isNFCOn">Write</span>
+	            	<a ng-show="!n.isNFCOn" class="btn-floating green" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px) translateX(0px); opacity: 0;" ng-click="n.OpenWriteTab()"><i class="material-icons">mode_edit</i></a></li>
+	            <li>
+	            	 <span ng-show="!n.isNFCOn">Read</span>
+	            	<a ng-show="!n.isNFCOn" class="btn-floating blue darken-1" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px) translateX(0px); opacity: 0;"><i class="material-icons" ng-click="n.OpenReadTab()">message</i></a></li>
+	            <li>
+	            	<span>Stop</span>
+	            	<a class="btn-floating red" style="transform: scaleY(0.4) scaleX(0.4) translateY(40px) translateX(0px); opacity: 0;" ng-click="n.StopNFC()"><i class="material-icons">stop</i></a></li>
+	          </ul>
+	        </div>
+		</div>
+	</div>
+</div>

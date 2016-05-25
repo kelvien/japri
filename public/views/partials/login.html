@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Log in</h3>
+                    <form name="loginForm" ng-submit="loginForm.$valid && l.Login()" class="margin-all-10" promise-btn novalidate>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input class="validate" tabindex=1 ng-model="l.model.email" type="email" name="email" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input class="validate" tabindex=2 ng-model="l.model.password" type="password" name="password" required>
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row" ng-if="l.error">
+                            <div class="alert alert-danger" role="alert">
+                                <b>Error:</b> 
+                                {{l.error}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12">
+                                <button tabindex=3 class="btn waves-effect waves-light pull-right" type="submit" ng-disabled="loginForm.$invalid" promise-btn>Log in
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <hr/>
+                    <div class="row text-center">
+                        <button ng-click="l.Login()" class="waves-effect waves-light btn-large" promise-btn><i class="material-icons left">verified_user</i>Kiosk Mode</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

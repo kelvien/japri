@@ -1,0 +1,38 @@
+<div class="card green darken-2">
+  <div class="card-content white-text large-widget row">
+    <p class="light-status text-left font-weight-300 widget-badge-title light-section">Light strip  <span class="japri_badge badge" ng-class="(l.loadingLightStripStatus) ? 'orange' : (l.isLightStripOn) ? 'green' : 'red'">{{(l.loadingLightStripStatus) ? "Loading" : (l.isLightStripOn) ? "On" : "Off" | uppercase}}</span></p>
+    <br/>
+    <div class="light-section">
+      <a class="btn btn-block" ng-class="(l.isLightStripOn) ? 'btn-danger':'btn-success'" ng-click="l.ToggleLightStrip()" promise-btn>{{(l.isLightStripOn)?"Turn off":"Turn on"}}</a>
+    </div>
+    <div class="light-section" ng-if="l.isLightStripOn">
+      <p class="font-weight-300">Set Brightness</p>
+      <p class="range-field">
+        <input type="range" ng-model="l.lightStripBrightness" min="0" max="100" ng-change="l.SetLightStripBrightness()"/>
+      </p>
+    </div>
+    <div class="light-section" ng-if="l.isLightStripOn">
+      <p class="font-weight-300">Set Color</p>
+      <div class="color-wheel-box">
+        <div ng-colorwheel="{ size: 150, segments: 120 }" ng-model="l.lightStripWheelColor" ng-change="l.SetLightStripColor()"></div>
+      </div>
+    </div>
+    <div class="light-section" ng-if="l.isLightStripOn">
+      <p class="font-weight-300">Mode</p>
+      <p class="light-section"><a class="btn" ng-click="l.Rainbow()" promise-btn>Rainbow</a></p>
+      <p class="light-section"><a class="btn" ng-click="l.Blink()" promise-btn>Blink</a></p>
+      <p class="light-section"><a class="btn" ng-click="l.Beam()" promise-btn>Beam</a></p>
+      <p class="light-section"><a class="btn" ng-click="l.Iterate()" promise-btn>Iterate</a></p>
+      <p class="text-right"><a class="light-advanced" ng-click="l.showAdvancedLightStripOptions = !l.showAdvancedLightStripOptions">{{(l.showAdvancedLightStripOptions) ? "Hide" : "Show"}} advanced options</a></p>
+      <div class="light-section" ng-show="l.showAdvancedLightStripOptions">
+        <p class="font-light">Delay</p>
+        <input type="number" placeholder="Example: 1000ms" ng-model="l.lightStripDelay">
+        <p class="font-light">Direction to iterate LightStrip</p>
+        <input id="leftDirectionOption" type="radio" value="true" ng-model="l.lightStripDirection" />
+        <label for="leftDirectionOption">Left to right</label>
+        <input id="rightDirectionOption" type="radio" value="false" ng-model="l.lightStripDirection"/>
+        <label for="rightDirectionOption">Right to left</label>
+      </div>
+    </div>
+  </div>
+</div>

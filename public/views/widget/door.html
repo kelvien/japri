@@ -1,0 +1,8 @@
+<div class="card grey darken-3">
+  <div class="card-content white-text">
+  	<p class="text-left font-weight-300 widget-badge-title">Door<span class="japri_badge badge" ng-class="(d.loadingServoStatus) ? 'orange' : (d.isBusy) ? 'red' : 'green'">{{(d.loadingServoStatus) ? "Loading" : (d.isBusy) ? "Busy" : "Free" | uppercase}}</span></p>
+    <br/>
+
+    <button ng-disabled="d.isBusy" class="waves-effect waves-light btn btn-block" ng-click="d.OpenDoor()">{{(d.loadingServoStatus) ? "Loading door" : (d.isBusy)?"Door is busy":"Open door"}}</button>
+  </div>
+</div>

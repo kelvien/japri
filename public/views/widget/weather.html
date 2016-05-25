@@ -1,0 +1,43 @@
+<div class="card blue-grey darken-1 small-widget parent-vertical">
+	<div class="card-content white-text child-vertical">
+		<div ng-if="w.loading">
+			<div class="progress">
+				<div class="indeterminate"></div>
+			</div>
+		</div>
+		<div ng-if="!w.loading">
+			<div class="row no-margin-bottom">
+				<div class="col-xs-12">
+					<p class="pull-right last-updated-text">Last updated: {{w.lastUpdated}}</p>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-md-4 text-left">
+					<div class="weather">
+						<p class="font-weight-300 text-center">Right now</p>
+						<skycon icon="w.data.currently.icon" size="100" color="w.iconColor"></skycon>
+						<div class="weather-info">
+							<h5 class="weather-summary-text text-ellipsis font-light no-margin-top">{{w.data.currently.summary}}</h5>
+							<h5 class="font-weight-300">{{w.data.currently.apparentTemperature}}&#176; C
+							</h5>
+							<p>Precip : {{w.data.currently.precipProbability}}%</p>
+						</div>
+					</div>
+				</div>
+				<div class="hidden-xs hidden-sm visible-md visible-lg col-xs-12 col-sm-6 col-md-8 text-left weather-daily">
+					<div class="weather-inline" ng-repeat="daily in w.data.daily.data">
+						<p class="text-center font-weight-300">{{(daily.time * 1000) | date : "EEEE"}}</p>
+						<skycon icon="daily.icon" size="100" color="w.iconColor"></skycon>
+						<div class="weather-info">
+							<h5 class="weather-summary-text text-ellipsis font-light no-margin-top">{{daily.summary}}</h5>
+							<p class="font-weight-300">Min : {{daily.apparentTemperatureMin}}&#176; C </p>
+							<p class="font-weight-300">Max : {{daily.apparentTemperatureMax}}&#176; C
+							<p class="font-weight-300">
+							Precip : {{daily.precipProbability}}%
+							</p>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

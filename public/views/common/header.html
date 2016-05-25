@@ -1,0 +1,22 @@
+<header>
+	<nav>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="nav-wrapper">
+						<a href="/" class="brand-logo">Japri</a>
+						<a href="#" data-activates="side_menu" class="button-collapse"><i class="material-icons">menu</i></a>
+						<ul class="right hide-on-med-and-down">
+							<li ng-repeat="menu in h.Menu"><a ui-sref="{{menu.name}}" ng-if="!menu.callback_function">{{menu.title}}</a>
+							<a ng-click="menu.callback_function()" ng-if="menu.callback_function">{{menu.title}}</a></li>
+						</ul>
+						<ul class="side-nav" id="side_menu">
+							<li ng-repeat="menu in h.Menu"><a ui-sref="{{menu.name}}" ng-if="!menu.callback_function">{{menu.title}}</a>
+							<a ng-click="menu.callback_function()" ng-if="menu.callback_function">{{menu.title}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>

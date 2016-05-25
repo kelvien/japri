@@ -1,0 +1,12 @@
+<div class="card gradient-blue">
+	<div class="card-content white-text">
+		<p class="text-left font-weight-300 widget-badge-title">Light Sensor <span class="japri_badge badge" ng-class="(l.loadingLightSensor)? 'orange' : (l.isLightSensorOn) ? 'green' : 'red'">{{(l.loadingLightSensor) ? "Loading" : (l.isLightSensorOn) ? "On" : "Off" | uppercase}}</span></p>
+			<br/>
+
+		<p class="font-light display-block pull-right"><b>Live data : </b> {{(l.isLightSensorOn) ? l.LightSensorReadingFormatted : "Unavailable"}}</p>
+		<div class="clearfix"></div>
+		<p class="font-light display-block pull-right"><b>Raw data : </b> {{(l.isLightSensorOn) ? l.LightSensorReading : "Unavailable"}}</p>
+		<hr class="no-margin-bottom" />
+		<light-sensor-chart data="l.LightSensorReading" scroll-glue-right></light-sensor-chart>
+	</div>
+</div>

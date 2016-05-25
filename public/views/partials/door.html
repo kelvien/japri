@@ -1,0 +1,13 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Door</h3>
+			<div class="row">
+				<p class="pull-right">Door Status: <span class="japri_badge badge" ng-class="(d.loadingServoStatus) ? 'orange' : (d.isBusy) ? 'red' : 'green'">{{(d.loadingServoStatus) ? "Loading" : (d.isBusy) ? "Busy" : "Free" | uppercase}}</span></p>
+			</div>
+			<div class="row">
+				 <button ng-disabled="d.isBusy" class="waves-effect waves-light btn" ng-click="d.OpenDoor()">{{(d.loadingServoStatus) ? "Loading door" : (d.isBusy)?"Door is busy":"Open door"}}</button>
+			</div>	
+		</div>
+	</div>
+</div>
