@@ -2,4 +2,4 @@
 
 mongod --dbpath /home/pi/DB/mongodb --repair
 mongod --dbpath /home/pi/DB/mongodb --auth & 
-node /home/pi/prog/japri/server.js &
+node /home/pi/prog/dist_test/japri/server.js &
