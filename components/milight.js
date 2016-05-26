@@ -1,13 +1,16 @@
-var Milight = require("milight");
+var Milight = require("node-milight-promise").MilightController;
+var commands = require("node-milight-promise").commands2;
 
 function Light(ip){
 	var light = this;
 
 	light.milight = new Milight({
-	    host: ip,
-	    broadcast: false,
-	    delayBetweenMessages: 1
-	});
+        ip: ip,
+        commandRepeat: 5,
+        delayBetweenCommands: 10
+    });
+
+    var zone = 1;
 
 	// Variables
 	light.IsMilightOn = false;
@@ -20,7 +23,23 @@ function Light(ip){
 	light.SetColorHex = SetColorHex;
 	light.SetWhite = SetWhite;
 
-	light.Mode = Mode;
+	// Helper
+	// Reference
+	// http://stackoverflow.com/questions/5623838/rgb-to-hex-and-hex-to-rgb
+	function hexToRgb(hex) {
+	    // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+	    var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	    hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+	        return r + r + g + g + b + b;
+	    });
+
+	    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	    return result ? {
+	        r: parseInt(result[1], 16),
+	        g: parseInt(result[2], 16),
+	        b: parseInt(result[3], 16)
+	    } : null;
+	}
 
 	// Milight Basic Functions
 	function SetOn(){
@@ -28,26 +47,25 @@ function Light(ip){
 	}
 
 	function Off(){
-		light.milight.zone(1).off();
+		light.milight.sendCommands(commands.rgbw.off(zone));
 		light.IsMilightOn = false;
 		light.Brightness = 0;
 	}
 
 	function SetBrightness(brightness){
 		light.SetOn();
-		light.Brightness = brightness;
-		light.milight.zone(1).brightness(brightness);
+		light.milight.sendCommands(commands.rgbw.brightness(brightness));
 		light.Brightness = brightness;
 	}
 
 	function SetColorHex(hex){
-		light.SetOn();
-		light.milight.zone(1).rgb(hex);
+		var rgb = hexToRgb(hex);
+		SetColorRGB(rgb.r, rgb.g, rgb.b);
 	}
 
 	function SetColorRGB(r, g, b){
 		light.SetOn();
-		light.milight.zone(1).rgb255(r, g, b);
+		light.milight.sendCommands(commands.rgbw.on(zone), commands.rgbw.rgb255(r, g, b));
 	}
 
 	function SetWhite(brightness){
@@ -55,29 +73,7 @@ function Light(ip){
 		light.Brightness = brightness;
 		
 		light.SetOn();
-		// Enforce turning on (Like pressing Milight app for 3 seconds -_-, that's why)
-		for(i = 0; i < 20; i++){
-			light.milight.zone(1).white(brightness);
-		}
-	}
-
-	function Mode(mode){
-		switch(mode){
-			case "romantic":
-				light.SetColorRGB(255, 132, 188);
-				setTimeout(function(){
-					light.SetBrightness(25);
-				}, 2000);
-				break;
-			case "blue":
-				light.SetColorRGB(0, 119, 190);
-				setTimeout(function(){
-					light.SetBrightness(25);
-				}, 2000);
-				break;
-			default:
-				throw "Mode does not exist";
-		}
+		light.milight.sendCommands(commands.rgbw.on(zone), commands.rgbw.whiteMode(zone), commands.rgbw.brightness(brightness));
 	}
 
 	function Init(){
