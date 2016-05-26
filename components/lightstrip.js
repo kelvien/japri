@@ -1,4 +1,3 @@
-//var spawn = require("child_process").spawn;
 var ws281x = require('../node_modules/rpi-ws281x-native/lib/ws281x-native');
 
 var MAX = 150;
