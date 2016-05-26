@@ -3,7 +3,7 @@ Japri provides critical data, like camera pictures, and sensors in real-time.
 Japri requires a server that is hosted by a low cost computer, Raspberry Pi 3 ($35). It will handle requests from mobile phones / computers that are connected to your home network where your Raspberry Pi is connected at.
 
 DEMO / Article that explains a high level view of this project:
-https://medium.com/@kelvien/japri-7a43cf7f0cdc#.k0a3addk9
+https://medium.com/@kelvien/japri-7a43cf7f0cdc
 
 Features:
 - JWT (JSON Web Token): Using token to validate per user's request
