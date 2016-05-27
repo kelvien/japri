@@ -81699,8 +81699,7 @@ angularSkycons.directive( "skycon", function () {
 				});
 
 				notification.onclick = function(event) {
-					event.preventDefault(); // prevent the browser from focusing the Notification's tab
-					window.open("/", "_self");
+					window.focus();
 					notification.close();
 				};
 
@@ -81725,8 +81724,7 @@ angularSkycons.directive( "skycon", function () {
 					});
 
 					notification.onclick = function(event) {
-						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/", "_self");
+						window.focus();
 						notification.close();
 					};
 
@@ -81746,8 +81744,7 @@ angularSkycons.directive( "skycon", function () {
 					});
 
 					notification.onclick = function(event) {
-						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/", "_self");
+						window.focus();
 						notification.close();
 					};
 

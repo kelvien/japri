@@ -426,8 +426,7 @@
 				});
 
 				notification.onclick = function(event) {
-					event.preventDefault(); // prevent the browser from focusing the Notification's tab
-					window.open("/", "_self");
+					window.focus();
 					notification.close();
 				};
 
@@ -452,8 +451,7 @@
 					});
 
 					notification.onclick = function(event) {
-						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/", "_self");
+						window.focus();
 						notification.close();
 					};
 
@@ -473,8 +471,7 @@
 					});
 
 					notification.onclick = function(event) {
-						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/", "_self");
+						window.focus();
 						notification.close();
 					};
 
