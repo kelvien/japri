@@ -427,7 +427,7 @@
 
 				notification.onclick = function(event) {
 					event.preventDefault(); // prevent the browser from focusing the Notification's tab
-					window.open("/chat");
+					window.open("/", "_self");
 					notification.close();
 				};
 
@@ -453,7 +453,7 @@
 
 					notification.onclick = function(event) {
 						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/cam");
+						window.open("/", "_self");
 						notification.close();
 					};
 
@@ -474,7 +474,7 @@
 
 					notification.onclick = function(event) {
 						event.preventDefault(); // prevent the browser from focusing the Notification's tab
-						window.open("/lighting");
+						window.open("/", "_self");
 						notification.close();
 					};
 
