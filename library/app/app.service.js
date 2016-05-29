@@ -613,26 +613,27 @@
         Service.Stop = stop;
         Service.AddCommand = addCommand;
 
-        Service.commands = {};
+        Service.commands = [];
 
         function addCommand(phrase, callback) {
-            var command = {};
+        	if(annyang){
+        		var command = {};
             
-            command[phrase] = function(args) {
-                $rootScope.$apply(callback(args));
-            };
+	            command[phrase] = function(args) {
+	                $rootScope.$apply(callback(args));
+	            };
 
-            // Extend our commands list
-            angular.extend(Service.commands, command);
-            
-            annyang.addCommands(command);
+	            // Extend our commands list
+	            angular.extend(Service.commands, command);
+	            
+	            annyang.addCommands(command);
+        	}
         }
 
         function init() {
-            annyang.addCommands(Service.commands);
-            annyang.debug(true);
-           
-            RunAnnyangGUI();
+        	if(annyang){
+        		RunAnnyangGUI();
+        	}          
         }
 
         function start(){
