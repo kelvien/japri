@@ -19,6 +19,8 @@ var default_camera_args = [
 			"-w", default_dimensionX, // Width
 			"-h", default_dimensionY, // Height
 			"-q", 10, // Quality
+			"br", 70 // Brightness
+			"co", 70, // Contrast
 			"-n", // Show no preview
 			"--exposure", "sports"] // Exposure type: Sports (Minimize blurry image on moving objects)
 
